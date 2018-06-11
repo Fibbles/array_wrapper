@@ -50,31 +50,31 @@ namespace fibb
             }
 
             /* COMPARISON */
-            constexpr bool operator==(const Array_Wrapper& other) const
+            constexpr bool operator==(const Array_Wrapper& other) const noexcept
             {
                 return std::equal(begin(), end(), other.begin());
             }
 
-            constexpr bool operator!=(const Array_Wrapper& other) const { return !(*this == other); }
+            constexpr bool operator!=(const Array_Wrapper& other) const noexcept { return !(*this == other); }
 
-            constexpr bool operator<(const Array_Wrapper& other) const
+            constexpr bool operator<(const Array_Wrapper& other) const noexcept
             {
                 return std::lexicographical_compare(begin(), end(), other.begin(), other.end());
             }
 
-            constexpr bool operator>(const Array_Wrapper& other) const
+            constexpr bool operator>(const Array_Wrapper& other) const noexcept
             {
                 auto comp = [] (const_reference a, const_reference b) -> bool { return a > b; };
                 return std::lexicographical_compare(begin(), end(), other.begin(), other.end(), comp);
             }
 
-            constexpr bool operator<=(const Array_Wrapper& other) const
+            constexpr bool operator<=(const Array_Wrapper& other) const noexcept
             {
                 auto comp = [] (const_reference a, const_reference b) -> bool { return a <= b; };
                 return std::lexicographical_compare(begin(), end(), other.begin(), other.end(), comp);
             }
 
-            constexpr bool operator>=(const Array_Wrapper& other) const
+            constexpr bool operator>=(const Array_Wrapper& other) const noexcept
             {
                 auto comp = [] (const_reference a, const_reference b) -> bool { return a >= b; };
                 return std::lexicographical_compare(begin(), end(), other.begin(), other.end(), comp);
